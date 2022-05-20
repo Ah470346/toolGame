@@ -5,6 +5,7 @@
       "name": "Light",
       "colors": {
         "body": "#FFFFFF",
+        "header": "#1a202c",
         "text": "#000000",
         "button": {
           "text": "#FFFFFF",
@@ -21,7 +22,8 @@
       "id": "T_002",
       "name": "Dark",
       "colors": {
-        "body": "#00000",
+        "body": "#000000",
+        "header": "#1a202c",
         "text": "#ffffff",
         "button": {
           "text": "#ffffff",
