@@ -1,8 +1,21 @@
 import React from 'react';
-import { HeaderStyle, AccessStyle } from './headerStyles/Header.style';
-import { Switch } from 'antd';
+import {
+  HeaderStyle,
+  AccessStyle,
+  NavigationStyle,
+  LogoStyle,
+  MenuStyle,
+  ListMenu,
+  ListItem,
+} from './headerStyles/Header.style';
+import { Switch, Row, Col } from 'antd';
+import ButtonCustom from '../Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import {
+  DollarCircleOutlined,
+  DeploymentUnitOutlined,
+} from '@ant-design/icons';
 import { useTheme } from '../../hooks/useTheme';
 import PropTypes from 'prop-types';
 
@@ -20,14 +33,47 @@ function Header({ setSelectedTheme }) {
   };
   return (
     <HeaderStyle>
-      <AccessStyle key={theme.name}>
-        <Switch
-          onChange={onChangeTheme}
-          checkedChildren={<FontAwesomeIcon icon={faSun} />}
-          unCheckedChildren={<FontAwesomeIcon icon={faMoon} />}
-          defaultChecked={theme.name === 'Light' ? true : false}
-        />
-      </AccessStyle>
+      <Row>
+        <NavigationStyle key={theme.name}>
+          <LogoStyle>
+            <img
+              src="http://st666.ez88888.com/static/images/logo.png"
+              alt="error"
+            />
+          </LogoStyle>
+          <AccessStyle>
+            <ButtonCustom>Đăng Nhập</ButtonCustom>
+            <ButtonCustom>Đăng Kí</ButtonCustom>
+            <Switch
+              onChange={onChangeTheme}
+              checkedChildren={<FontAwesomeIcon icon={faSun} />}
+              unCheckedChildren={<FontAwesomeIcon icon={faMoon} />}
+              defaultChecked={theme.name === 'Light' ? true : false}
+            />
+          </AccessStyle>
+        </NavigationStyle>
+      </Row>
+      <Row span={24}>
+        <MenuStyle>
+          <Col
+            span={24}
+            xl={{ span: 6, offset: 18 }}
+            lg={{ span: 8, offset: 16 }}
+            md={{ span: 10, offset: 14 }}
+          >
+            <ListMenu>
+              <ListItem>
+                <DollarCircleOutlined />
+                Thanh Toán
+              </ListItem>
+              <ListItem>
+                <DeploymentUnitOutlined />
+                Phân Tích
+              </ListItem>
+            </ListMenu>
+          </Col>
+        </MenuStyle>
+      </Row>
     </HeaderStyle>
   );
 }

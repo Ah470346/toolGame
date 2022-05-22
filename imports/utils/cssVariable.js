@@ -6,3 +6,6 @@ export const flexBox = (direction, justifyContent, alignItem) => css`
   justify-content: ${justifyContent};
   align-items: ${alignItem};
 `;
+
+export const MainColor = 'rgb(243,227,13)';
+export const HoverText = '#10a4e9';

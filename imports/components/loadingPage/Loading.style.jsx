@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import * as CssType from '../../utils/cssVariable';
 
 export const LoadingStyle = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-
   width: 100vw;
   height: 100vh;
 
@@ -16,16 +12,16 @@ export const LoadingStyle = styled.div`
   background-color: #ffffff;
 
   & img {
-    transform: scale(0.8);
+    transform: scale(0.6);
     animation: loading 1s linear 0.1s infinite alternate;
   }
 
   @keyframes loading {
     0% {
-      transform: scale(0.6);
+      transform: scale(0.5);
     }
     100% {
-      transform: scale(1);
+      transform: scale(0.7);
     }
   }
 `;

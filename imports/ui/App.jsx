@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import WebFont from 'webfontloader';
 import { GlobalStyles } from '../themes/GlobalStyles';
+import Home from '../pages/Home';
 import { useTheme } from '../hooks/useTheme';
-import Header from '../components/header/Header';
-import LoadingPage from '../components/loadingPage/LoadingPage';
-
-const Container = styled.div`
-  margin: 5px auto 5px auto;
-`;
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import '../styles/style.scss';
 
 function App() {
   const { theme, themeLoaded, getFonts } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
-  const [loading, setLoading] = useState(true);
-
-  // set loading time
-  setTimeout(() => {
-    setLoading(false);
-  }, 3000);
 
   useEffect(() => {
     setSelectedTheme(theme);
@@ -36,19 +27,20 @@ function App() {
     <>
       {themeLoaded && (
         <ThemeProvider theme={selectedTheme}>
-          <Header setSelectedTheme={setSelectedTheme}></Header>
           <GlobalStyles />
-          {loading && <LoadingPage />}
-          <Container style={{ fontFamily: selectedTheme.font }}>
-            <h1>Theme Builder</h1>
-            <p>
-              This is a theming system with a Theme Switcher and Theme Builder.
-              Do you want to see the source code?{' '}
-              <a href="https://github.com/atapas/theme-builder" target="_blank">
-                Click here.
-              </a>
-            </p>
-          </Container>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Home
+                    setSelectedTheme={setSelectedTheme}
+                    selectedTheme={selectedTheme}
+                  />
+                }
+              ></Route>
+            </Routes>
+          </BrowserRouter>
         </ThemeProvider>
       )}
     </>
